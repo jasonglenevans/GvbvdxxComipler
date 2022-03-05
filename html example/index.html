@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title></title>
+	</head>
+	
+	<body>
+		<center>
+			<h1>Gvbvdxx's Compiler Example</h1>
+			<br>
+			<p>Below Is An Image This Will Change When Uploading The .gcompiled File In The Folder</p>
+			<br>
+			<img src="" id="image">
+			<br>
+			<input type="file" onchange="load(this)">
+		</center>
+		<script src="gcompilerImporter.js"></script>
+	</body>
+</html>
+<script>
+function load(file) {
+	var fileselect = file;
+	var reader = new FileReader();
+	reader.onload = function() {
+		if (gcompiler.openFile(reader.result)) {
+			document.getElementById("image").src = gcompiler.readFile("example.png");
+		} else {
+			window.alert("Invalid File!");
+		}
+	}
+	if (fileselect.files[0]){
+		reader.readAsText(fileselect.files[0]);
+	}
+}
+</script>
